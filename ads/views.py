@@ -17,7 +17,7 @@ class CategoriesView(View):
     def get(self, request):
         categories = Category.objects.all()
         response = [{"id": category.id, "name": category.name} for category in categories]
-        return JsonResponse(response, safe=False)
+        return JsonResponse(response, safe=False, json_dumps_params={"ensure_ascii": False})
 
     def post(self, request):
         category = Category.objects.create(name=json.loads(request.body)["name"])
@@ -35,7 +35,7 @@ class CategoryDetailView(View):
             return JsonResponse({
                 "id": category.id,
                 "name": category.name
-            })
+            }, json_dumps_params={"ensure_ascii": False})
 
 
 @method_decorator(csrf_exempt, name='dispatch')
@@ -50,7 +50,7 @@ class AdsView(View):
              }
             for ad in ads
         ]
-        return JsonResponse(response, safe=False)
+        return JsonResponse(response, safe=False, json_dumps_params={"ensure_ascii": False})
 
     def post(self, request):
         ad_request = json.loads(request.body)
@@ -93,5 +93,5 @@ class AdDetailView(View):
                 "description": ad.description,
                 "address": ad.address,
                 "is_published": ad.is_published
-            }
+            }, json_dumps_params={"ensure_ascii": False}
         )
