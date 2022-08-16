@@ -26,20 +26,18 @@ class CategoriesView(View):
         return JsonResponse({"id": category.id, "name": category.name})
 
 
-class CategoryDetailView(DetailView):
-    model = Category
-
-    def get(self, request, *args, **kwargs):
-        try:
-            category = self.get_object()
+class CategoryDetailView(View):
+    def get(self, request, cat_id):
+        if request.method == "GET":
+            try:
+                category = Category.objects.get(pk=cat_id)
+            except Category.DoesNotExist:
+                return JsonResponse({'error': 'Not found'}, status=404)
 
             return JsonResponse({
                 "id": category.id,
                 "name": category.name
             })
-        except FileNotFoundError:
-            raise 404
-
 
 
 @method_decorator(csrf_exempt, name='dispatch')
@@ -78,11 +76,15 @@ class AdsView(View):
         }
         )
 
-class AdDetailView(DetailView):
-    model = Ad
 
-    def get(self, request, *args, **kwargs):
-        ad = self.get_object()
+class AdDetailView(View):
+
+    def get(self, request, ad_id):
+        if request.method == "GET":
+            try:
+                ad = Ad.objects.get(pk=ad_id)
+            except Ad.DoesNotExist:
+                return JsonResponse({'error': "Not found"}, status=404)
 
         return JsonResponse(
             {
