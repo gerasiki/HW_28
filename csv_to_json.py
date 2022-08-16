@@ -40,4 +40,4 @@ def convert_file_categories(csv_file, model_name, json_file):
 
 
 # convert_file_ads(DATA_ADS, "ads.ad", JSON_ADS)
-convert_file_categories(DATA_CAT, "ads.categories", JSON_CAT)
+convert_file_categories(DATA_CAT, "ads.category", JSON_CAT)
