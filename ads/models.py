@@ -4,6 +4,7 @@ from user.models import User
 
 
 class Category(models.Model):
+    id = models.BigAutoField(primary_key=True)
     name = models.CharField(max_length=25)
 
     class Meta:
