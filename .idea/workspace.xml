@@ -4,11 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a782542e-e3ea-4e5d-8095-acbdf98e8872" name="Changes" comment="added views and urls">
-      <change afterPath="$PROJECT_DIR$/ads/migrations/0004_alter_category_id.py" afterDir="false" />
+    <list default="true" id="a782542e-e3ea-4e5d-8095-acbdf98e8872" name="Changes" comment="fixed views">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/c9b0e8d6-fca0-4ced-915d-59b06f5031e5.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/c9b0e8d6-fca0-4ced-915d-59b06f5031e5.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/c9b0e8d6-fca0-4ced-915d-59b06f5031e5/storage_v2/_src_/database/hunting.b39zSw/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/c9b0e8d6-fca0-4ced-915d-59b06f5031e5/storage_v2/_src_/database/hunting.b39zSw/schema/public.abK9xQ.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ads/urls/ads.py" beforeDir="false" afterPath="$PROJECT_DIR$/ads/urls/ads.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ads/urls/categories.py" beforeDir="false" afterPath="$PROJECT_DIR$/ads/urls/categories.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ads/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/ads/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/user/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -152,7 +154,7 @@
       <workItem from="1660549321902" duration="647000" />
       <workItem from="1660550004598" duration="18000" />
       <workItem from="1660550040427" duration="20365000" />
-      <workItem from="1661421957460" duration="35372000" />
+      <workItem from="1661421957460" duration="37261000" />
     </task>
     <task id="LOCAL-00001" summary="models and migrations">
       <created>1660564842980</created>
@@ -245,7 +247,14 @@
       <option name="project" value="LOCAL" />
       <updated>1661605326058</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="fixed views">
+      <created>1661607869751</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1661607869751</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -274,7 +283,8 @@
     <MESSAGE value="added new models" />
     <MESSAGE value="added new database" />
     <MESSAGE value="added views and urls" />
-    <option name="LAST_COMMIT_MESSAGE" value="added views and urls" />
+    <MESSAGE value="fixed views" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed views" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/HW27$csv_to_json.coverage" NAME="csv_to_json Coverage Results" MODIFIED="1660631709707" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />

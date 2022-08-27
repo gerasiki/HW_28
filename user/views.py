@@ -54,7 +54,6 @@ class UserDetailView(DetailView):
                              "last_name": user.last_name,
                              "role": user.role,
                              "age": user.age,
-                             "total_ads": user.total_ads,
                              "locations": list(map(str, user.locations.all())),})
 
 

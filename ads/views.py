@@ -185,7 +185,7 @@ class AdUpdateView(UpdateView):
         self.object.description = ad_data["description"]
         
         author = get_object_or_404(User, pk=ad_data["author_id"])
-        self.object.category = get_object_or_404(Category, pk=ad_data["category_id"])
+        self.object.category = get_object_or_404(Category, pk=ad_data["category"])
         
         self.object.save()
         return JsonResponse({
