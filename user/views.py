@@ -30,7 +30,6 @@ class UsersView(ListView):
                   "last_name": user.last_name,
                   "role": user.role,
                   "age": user.age,
-                  "total_ads": user.total_ads,
                   "locations": list(map(str, user.locations.all())),} for user in page_obj]
         
         response = {
@@ -60,7 +59,7 @@ class UserDetailView(DetailView):
 @method_decorator(csrf_exempt, name='dispatch')
 class UserCreateView(CreateView):
     model = User
-    fields = ["username", "password", "first_name", "last_name", "role", "age", "location"]
+    fields = ["username", "password", "first_name", "last_name", "role", "age", "locations"]
     
     def post(self, request, *args, **kwargs):
         user_data = json.loads(request.body)
@@ -74,7 +73,7 @@ class UserCreateView(CreateView):
             age=user_data["age"],        
         )
     
-        for location_name in user_data["location"]:
+        for location_name in user_data["locations"]:
             location, _ = Location.objects.get_or_create(name=location_name)
             user.locations.add(location)
             
@@ -85,14 +84,13 @@ class UserCreateView(CreateView):
              "last_name": user.last_name,
              "role": user.role,
              "age": user.age,
-             "total_ads": user.total_ads,
              "locations": list(map(str, user.locations.all())), })
 
 
 @method_decorator(csrf_exempt, name='dispatch')
 class UserUpdateView(UpdateView):
     model = User
-    fields = ["username", "password", "first_name", "last_name", "role", "age", "location"]
+    fields = ["username", "password", "first_name", "last_name", "role", "age", "locations"]
     
     def patch(self, request, *args, **kwargs):
         super().post(request, *args, **kwargs)
@@ -111,12 +109,11 @@ class UserUpdateView(UpdateView):
         self.object.save()
         return JsonResponse(
             {"id": self.object.id,
-             "self.objectname": self.object.self.objectname,
+             "self.objectname": self.object.username,
              "first_name": self.object.first_name,
              "last_name": self.object.last_name,
              "role": self.object.role,
              "age": self.object.age,
-             "total_ads": self.object.total_ads,
              "locations": list(map(str, self.object.locations.all())),})
 
 
