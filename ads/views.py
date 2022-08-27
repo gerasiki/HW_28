@@ -103,7 +103,7 @@ class AdsView(ListView):
             "id": ad.id,
             "name": ad.name,
             "author_id": ad.author_id,
-            "author": ad.author,
+            "author": ad.author.username,
             "price": ad.price,
             "description": ad.description,
             "is_published": ad.is_published,
@@ -129,13 +129,13 @@ class AdDetailView(DetailView):
             "id": ad.id,
             "name": ad.name,
             "author_id": ad.author_id,
-            "author": ad.author,
+            "author": ad.author.first_name,
             "price": ad.price,
             "description": ad.description,
             "is_published": ad.is_published,
             "category_id": ad.category_id,
             "image": ad.image.url if ad.image else None,
-        }, json_dumps_params={"ensure_ascii": False})
+        })
 
 
 @method_decorator(csrf_exempt, name='dispatch')
@@ -147,7 +147,7 @@ class AdCreateView(CreateView):
         ad_data = json.loads(request.body)
 
         author = get_object_or_404(User, pk=ad_data["author_id"])
-        category = get_object_or_404(Category, ad_data["category"])
+        category = get_object_or_404(Category, pk=ad_data["category"])
                 
         ad = Ad.objects.create(
             name=ad_data["name"],
@@ -184,15 +184,15 @@ class AdUpdateView(UpdateView):
         self.object.price = ad_data["price"]
         self.object.description = ad_data["description"]
         
-        self.object.author = get_object_or_404(User, ad_data["author_id"])
-        self.object.category = get_object_or_404(Category, ad_data["category_id"])
+        author = get_object_or_404(User, pk=ad_data["author_id"])
+        self.object.category = get_object_or_404(Category, pk=ad_data["category_id"])
         
         self.object.save()
         return JsonResponse({
             "id": self.object.id,
             "name": self.object.name,
             "author_id": self.object.author_id,
-            "author": self.object.author.first_name,
+            "author": author.first_name,
             "price": self.object.price,
             "description": self.object.description,
             "is_published": self.object.is_published,
