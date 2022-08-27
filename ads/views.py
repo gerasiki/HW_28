@@ -221,7 +221,7 @@ class AdUploadImageView(UpdateView):
         self.object = self.get_object()
 
         self.object.image = request.FILES.get('image', None)
-        self.obgject.save()
+        self.object.save()
 
         return JsonResponse({
             "id": self.object.id,
