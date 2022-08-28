@@ -4,7 +4,6 @@ from django.conf import settings
 from django.core.paginator import Paginator
 from django.db.models import Count
 from django.http import JsonResponse
-from django.shortcuts import render
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
@@ -30,7 +29,8 @@ class UsersView(ListView):
                   "last_name": user.last_name,
                   "role": user.role,
                   "age": user.age,
-                  "locations": list(map(str, user.locations.all())),} for user in page_obj]
+                  "locations": list(map(str, user.locations.all())),
+                  'total_ads': user.total_ads,} for user in page_obj]
         
         response = {
             "items": users,
