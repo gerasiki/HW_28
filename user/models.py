@@ -7,8 +7,8 @@ class Location(models.Model):
     lng = models.DecimalField(max_digits=8, decimal_places=6, null=True)
 
     class Meta:
-        verbose_name = "Place"
-        verbose_name_plural = "Places"
+        verbose_name = "Локация"
+        verbose_name_plural = "Локации"
 
     def __str__(self):
         return self.name
@@ -30,8 +30,8 @@ class User(models.Model):
     locations = models.ManyToManyField(Location)
 
     class Meta:
-        verbose_name = "User"
-        verbose_name_plural = "Users"
+        verbose_name = "Пользователь"
+        verbose_name_plural = "Пользователи"
         ordering = ["username"]
 
     def __str__(self):

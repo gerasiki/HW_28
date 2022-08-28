@@ -8,8 +8,8 @@ class Category(models.Model):
     name = models.CharField(max_length=25)
 
     class Meta:
-        verbose_name = "Category"
-        verbose_name_plural = "Categories"
+        verbose_name = "Категория"
+        verbose_name_plural = "Категории"
 
     def __str__(self):
         return self.name
@@ -25,5 +25,8 @@ class Ad(models.Model):
     image = models.ImageField(upload_to="ads/", null=True, blank=True)
 
     class Meta:
-        verbose_name = "Ad"
-        verbose_name_plural = "Ads"
+        verbose_name = "Объявление"
+        verbose_name_plural = "Объявления"
+
+    def __str__(self):
+        return self.name
